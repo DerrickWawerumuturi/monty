@@ -38,4 +38,48 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+/**
+ * struct global_s - variables -> args, file, line
+ * @arg: value
+ * @line: input line content
+ * @file: pointer to monty file
+ *
+ * Description: variables that carries values through the program
+ */
+typedef struct global_s
+{
+	char *arg;
+	FILE *file;
+	char *line;
+	int lifi;
+} glob_t;
+
+extern glob_t glob;
+/* prototypes*/
+void execute_file(stack_t **stack);
+void execute_opcode(char *opcode, stack_t **stack, unsigned int line_number);
+
+void op_pop(stack_t **stack, unsigned int line_number);
+void op_swap(stack_t **stack, unsigned int line_number);
+void op_push(stack_t **stack, unsigned int line_number);
+void op_pall(stack_t **stack, unsigned int line_number);
+void op_pint(stack_t **stack, unsigned int line_number);
+void op_add(stack_t **stack, unsigned int line_number);
+void op_nop(stack_t **stack, unsigned int line_number);
+void op_sub(stack_t **stack, unsigned int line_number);
+void op_div(stack_t **stack, unsigned int line_number);
+void op_mul(stack_t **stack, unsigned int line_number);
+void op_mod(stack_t **stack, unsigned int line_number);
+void op_pchar(stack_t **stack, unsigned int line_number);
+void op_pstr(stack_t **stack, unsigned int line_number);
+void f_queue(stack_t **head, unsigned int counter);
+void f_stack(stack_t **head, unsigned int counter);
+void f_rotl(stack_t **head, unsigned int counter);
+void f_rotr(stack_t **head, __attribute__((unused)) unsigned int counter);
+/* Stack helper functions */
+stack_t *add_node(stack_t **stack, const int n);
+int is_number(char *str);
+void free_stack(stack_t *stack);
+
 #endif
