@@ -1,11 +1,11 @@
 #include "monty.h"
-/**
- * op_push - pushes a number to the top of stack
- * @stack - pinter to the top of the stack
- * @line_number: current line number of the opcode in monty file
- */
 
-void op_push(stack_t *stack, unsigned int line_number)
+/**
+ * op_push - pushes an element
+ * @stack: pointer to the top of the stack
+ * @line_number: current line number of the opcode in the Monty file
+ */
+void op_push(stack_t **stack, unsigned int line_number)
 {
 	int n;
 
@@ -30,23 +30,26 @@ void op_push(stack_t *stack, unsigned int line_number)
 }
 
 /**
- * is_number = checks if a string is a number
+ * is_number - checks if a string is a number
  * @str: string to check
  *
- * Return: 1 if  string is a number or 0
+ * Return: 1 if string is a number, 0 otherwise
  */
-
 int is_number(char *str)
 {
 	if (str == NULL || *str == '\0')
 		return (0);
+
 	if (*str == '-' || *str == '+')
 		str++;
+
 	while (*str != '\0')
 	{
 		if (*str < '0' || *str > '9')
 			return (0);
+
 		str++;
 	}
+
 	return (1);
 }
