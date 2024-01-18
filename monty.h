@@ -1,5 +1,6 @@
-#ifndef LISTS_H
-#define LISTS_H
+#ifndef MONTY_H
+#define MONTY_H#
+#define _GNU_SOURCE
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -56,6 +57,7 @@ typedef struct global_s
 } glob_t;
 
 extern glob_t glob;
+
 /* prototypes*/
 void execute_file(stack_t **stack);
 void execute_opcode(char *opcode, stack_t **stack, unsigned int line_number);
